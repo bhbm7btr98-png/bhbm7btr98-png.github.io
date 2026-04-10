@@ -7,73 +7,105 @@
   <meta name="description" content="Elephant POS helps fast-moving businesses manage orders, menus, and printer workflows from one clean point-of-sale system.">
   <style>
     :root {
-      --bg: #f4efe6;
-      --panel: rgba(255,255,255,0.84);
-      --ink: #1d2a23;
-      --muted: #5d6a62;
-      --line: rgba(29,42,35,0.1);
-      --accent: #1e6b50;
-      --accent-dark: #124534;
-      --soft: #dbeadf;
-      --shadow: 0 18px 50px rgba(20,34,28,0.12);
-      --radius: 24px;
-      --max: 1160px;
+      --bg-top: #0d121a;
+      --bg-mid: #131c2b;
+      --bg-bottom: #1e2c4a;
+      --panel: #1c212b;
+      --panel-2: #282d38;
+      --panel-line: rgba(255, 255, 255, 0.08);
+      --ink: #f5f8ff;
+      --muted: rgba(226, 235, 255, 0.72);
+      --accent-1: #92c7ff;
+      --accent-2: #57b3f5;
+      --accent-3: #478ce6;
+      --accent-deep: #214f8b;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1180px;
     }
+
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
       color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
       background:
-        radial-gradient(circle at top left, rgba(185,133,47,0.16), transparent 30%),
-        radial-gradient(circle at top right, rgba(30,107,80,0.16), transparent 25%),
-        linear-gradient(180deg, #fbf8f1 0%, var(--bg) 100%);
+        radial-gradient(circle at 15% 12%, rgba(146, 199, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 88% 14%, rgba(87, 179, 245, 0.18), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(71, 140, 230, 0.14), transparent 30%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-bottom) 100%);
       line-height: 1.5;
+      min-height: 100vh;
     }
-    a { color: inherit; text-decoration: none; }
-    .shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(12px);
-      background: rgba(244,239,230,0.82);
-      border-bottom: 1px solid rgba(29,42,35,0.08);
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(9, 13, 20, 0.46);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .topbar .shell, .footer .shell {
+
+    .topbar .shell,
+    .footer .shell {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 18px;
     }
-    .topbar .shell { padding: 18px 0; }
+
+    .topbar .shell {
+      padding: 18px 0;
+    }
+
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
     }
+
     .mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      box-shadow: var(--shadow);
+      color: #08111d;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2) 48%, var(--accent-3));
+      box-shadow: 0 16px 36px rgba(87, 179, 245, 0.28);
     }
+
     nav {
       display: flex;
-      gap: 20px;
+      gap: 22px;
       align-items: center;
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: 0.97rem;
     }
-    .button, .nav-cta {
+
+    .nav-cta,
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -81,140 +113,275 @@
       padding: 0 22px;
       border-radius: 999px;
       font-weight: 700;
+      transition: transform 160ms ease, opacity 160ms ease, background 160ms ease;
     }
-    .nav-cta, .button-primary {
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+
+    .nav-cta:hover,
+    .button:hover {
+      transform: translateY(-2px);
     }
+
+    .nav-cta,
+    .button-primary {
+      color: #08111d;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      box-shadow: 0 14px 30px rgba(87, 179, 245, 0.24);
+    }
+
     .button-secondary {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--ink);
     }
-    .hero, section { padding: 32px 0; }
-    .hero { padding-top: 68px; }
-    .hero-grid, .feature-grid, .fit-grid, .contact-grid {
+
+    .hero,
+    section {
+      padding: 34px 0;
+    }
+
+    .hero {
+      padding-top: 70px;
+    }
+
+    .hero-grid,
+    .feature-grid,
+    .fit-grid,
+    .contact-grid {
       display: grid;
-      gap: 20px;
+      gap: 22px;
     }
-    .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
-    .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .fit-grid, .contact-grid { grid-template-columns: 1fr 1fr; }
+
+    .hero-grid {
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: stretch;
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .fit-grid,
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
     .card {
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.6);
-      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(29, 34, 43, 0.98), rgba(20, 25, 34, 0.98));
+      border: 1px solid var(--panel-line);
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
     }
-    .hero-copy { padding: 46px; }
-    .hero-panel, .feature-card, .fit-card, .contact-card { padding: 28px; }
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 14px;
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-copy {
+      padding: 46px;
+    }
+
+    .hero-panel,
+    .feature-card,
+    .fit-card,
+    .contact-card {
+      padding: 30px;
+    }
+
+    .eyebrow,
+    .panel-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
       border-radius: 999px;
-      background: var(--soft);
-      color: var(--accent-dark);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: #08111d;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     }
-    h1, h2, h3, p { margin-top: 0; }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
     h1 {
-      margin: 22px 0;
-      font-size: clamp(2.7rem, 6vw, 5.5rem);
-      line-height: 0.94;
-      letter-spacing: -0.045em;
+      margin: 24px 0 18px;
+      font-size: clamp(2.8rem, 6vw, 5.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.055em;
       max-width: 10ch;
     }
+
     h2 {
-      font-size: clamp(2rem, 3.4vw, 3.2rem);
+      font-size: clamp(2rem, 3.4vw, 3.1rem);
       letter-spacing: -0.04em;
       margin-bottom: 10px;
     }
-    h3 { font-size: 1.22rem; margin-bottom: 10px; }
-    p, li { color: var(--muted); }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    p,
+    li,
+    nav a {
+      color: var(--muted);
+    }
+
+    .hero-copy > p {
+      font-size: 1.08rem;
+      max-width: 55ch;
+    }
+
     .cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
       margin: 28px 0 30px;
     }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
+
     .stat {
       padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.7);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, rgba(146, 199, 255, 0.14), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(146, 199, 255, 0.14);
     }
+
     .stat strong {
       display: block;
       margin-bottom: 4px;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--ink);
     }
-    .panel-tag {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(185,133,47,0.14);
-      color: #7c571c;
-      font-size: 0.82rem;
-      font-weight: 700;
+
+    .hero-panel {
+      background:
+        radial-gradient(circle at top right, rgba(146, 199, 255, 0.24), transparent 34%),
+        linear-gradient(180deg, rgba(36, 43, 56, 0.98), rgba(21, 27, 36, 0.98));
     }
+
     .receipt {
-      padding: 20px;
-      border-radius: 20px;
-      background: #fffdf9;
-      border: 1px solid rgba(29,42,35,0.08);
-      margin-bottom: 16px;
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(116, 184, 255, 0.18), rgba(71, 140, 230, 0.08));
+      border: 1px solid rgba(146, 199, 255, 0.22);
+      margin: 18px 0 14px;
     }
-    .receipt-row, .receipt-total {
+
+    .receipt-row,
+    .receipt-total {
       display: flex;
       justify-content: space-between;
       gap: 16px;
     }
+
     .receipt-row {
-      padding: 10px 0;
-      border-bottom: 1px dashed rgba(29,42,35,0.12);
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.16);
     }
+
     .receipt-total {
       padding-top: 14px;
       font-weight: 700;
       color: var(--ink);
     }
+
     .chip {
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(219,234,223,0.8);
-      border: 1px solid rgba(30,107,80,0.12);
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(53, 82, 124, 0.72), rgba(41, 57, 84, 0.72));
+      border: 1px solid rgba(146, 199, 255, 0.16);
       margin-top: 12px;
+      color: var(--ink);
     }
-    ul { margin: 0; padding-left: 18px; }
-    li { margin-bottom: 10px; }
+
+    .chip strong,
+    .feature-card h3,
+    .fit-card h2,
+    .contact-card h2 {
+      color: var(--ink);
+    }
+
+    .section-heading {
+      margin-bottom: 18px;
+      max-width: 60ch;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
     .footer {
-      padding: 26px 0 54px;
+      padding: 28px 0 54px;
       color: var(--muted);
       font-size: 0.94rem;
     }
+
     .footer .shell {
-      border-top: 1px solid rgba(29,42,35,0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 24px;
     }
+
     @media (max-width: 980px) {
-      .hero-grid, .feature-grid, .fit-grid, .contact-grid { grid-template-columns: 1fr; }
-      .topbar .shell, .footer .shell { flex-direction: column; align-items: flex-start; }
+      .hero-grid,
+      .feature-grid,
+      .fit-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar .shell,
+      .footer .shell {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
+
     @media (max-width: 720px) {
-      nav { flex-wrap: wrap; gap: 12px 18px; }
-      .hero-copy, .hero-panel, .feature-card, .fit-card, .contact-card { padding: 22px; }
-      .stats { grid-template-columns: 1fr; }
-      .hero { padding-top: 30px; }
+      nav {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .feature-card,
+      .fit-card,
+      .contact-card {
+        padding: 22px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
     }
   </style>
 </head>
@@ -226,19 +393,20 @@
         <a href="#features">Features</a>
         <a href="#fit">Best Fit</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cta" href="mailto:hello@elephantpos.com">Book a Demo</a>
+        <a class="nav-cta" href="mailto:contact@elephantpos.com">Book a Demo</a>
       </nav>
     </div>
   </header>
+
   <main id="top" class="shell">
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy card">
           <span class="eyebrow">Built for fast-moving counters</span>
           <h1>Run every order with less friction.</h1>
-          <p>Elephant POS gives restaurants and retail teams one clean place to manage orders, menus, item customization, and printer workflows without the clutter of legacy point-of-sale software.</p>
+          <p>Elephant POS gives restaurants and retail teams one focused place to manage orders, menus, item customization, and printer workflows without the clutter of legacy point-of-sale software.</p>
           <div class="cta-row">
-            <a class="button button-primary" href="mailto:hello@elephantpos.com?subject=Elephant%20POS%20Demo">Schedule a Demo</a>
+            <a class="button button-primary" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Demo">Schedule a Demo</a>
             <a class="button button-secondary" href="#features">See Features</a>
           </div>
           <div class="stats">
@@ -247,8 +415,9 @@
             <div class="stat"><strong>Printer ready</strong><span>Built around dependable receipt and kitchen printer workflows.</span></div>
           </div>
         </div>
+
         <aside class="hero-panel card">
-          <span class="panel-tag">Live-ready workflow</span>
+          <span class="panel-tag">App-style workflow</span>
           <div class="receipt">
             <div class="receipt-row"><span>2x Chicken Shawarma</span><span>$23.98</span></div>
             <div class="receipt-row"><span>1x Fries</span><span>$4.50</span></div>
@@ -261,30 +430,73 @@
         </aside>
       </div>
     </section>
+
     <section id="features">
-      <h2>Everything the counter needs.</h2>
-      <p>Elephant POS focuses on the daily work that matters most: accurate orders, fast navigation, reliable printing, and a menu your team can actually maintain.</p>
+      <div class="section-heading">
+        <h2>Everything the counter needs.</h2>
+        <p>Elephant POS focuses on the daily work that matters most: accurate orders, fast navigation, reliable printing, and a menu your team can actually maintain.</p>
+      </div>
       <div class="feature-grid">
-        <article class="feature-card card"><h3>Order Flow That Stays Clean</h3><p>Move from browsing categories to sending the order without fighting crowded screens or confusing steps.</p></article>
-        <article class="feature-card card"><h3>Menu Editing Without the Headache</h3><p>Add categories, update products, and fine-tune item details from a setup built for actual operators.</p></article>
-        <article class="feature-card card"><h3>Printer-Centered Operations</h3><p>Support for receipt and kitchen printer workflows keeps output part of the system, not an afterthought.</p></article>
+        <article class="feature-card card">
+          <h3>Order Flow That Stays Clean</h3>
+          <p>Move from browsing categories to sending the order without fighting crowded screens or confusing steps.</p>
+        </article>
+        <article class="feature-card card">
+          <h3>Menu Editing Without the Headache</h3>
+          <p>Add categories, update products, and fine-tune item details from a setup built for actual operators.</p>
+        </article>
+        <article class="feature-card card">
+          <h3>Printer-Centered Operations</h3>
+          <p>Support for Epson and Star printer workflows keeps output part of the system, not an afterthought.</p>
+        </article>
       </div>
     </section>
+
     <section id="fit">
       <div class="fit-grid">
-        <article class="fit-card card"><h2>Best for businesses that need speed and control.</h2><ul><li>Quick-service restaurants with modifier-heavy menus.</li><li>Counter-service concepts that need clean printer routing.</li><li>Retail or service teams that want a simple transaction flow.</li></ul></article>
-        <article class="fit-card card"><h2>Built with practical priorities.</h2><ul><li>Fast to learn for staff.</li><li>Flexible enough for changing menus.</li><li>Structured for real front-of-house pressure.</li></ul></article>
+        <article class="fit-card card">
+          <h2>Best for businesses that need speed and control.</h2>
+          <ul>
+            <li>Quick-service restaurants with modifier-heavy menus.</li>
+            <li>Counter-service concepts that need clean printer routing.</li>
+            <li>Retail or service teams that want a simple transaction flow.</li>
+          </ul>
+        </article>
+        <article class="fit-card card">
+          <h2>Built with practical priorities.</h2>
+          <ul>
+            <li>Fast to learn for staff.</li>
+            <li>Flexible enough for changing menus.</li>
+            <li>Structured for real front-of-house pressure.</li>
+          </ul>
+        </article>
       </div>
     </section>
+
     <section id="contact">
       <div class="contact-grid">
-        <article class="contact-card card"><h2>Bring Elephant POS into your shop.</h2><p>If you want a cleaner point-of-sale setup for your business, start with a short conversation and we can walk through fit, workflow, and rollout.</p><p><a class="button button-primary" href="mailto:hello@elephantpos.com?subject=Elephant%20POS%20Inquiry">hello@elephantpos.com</a></p></article>
-        <article class="contact-card card"><h2>What to include</h2><ul><li>Your business type and number of stations.</li><li>Whether you need kitchen or receipt printer support.</li><li>Your target launch timeline.</li></ul></article>
+        <article class="contact-card card">
+          <h2>Bring Elephant POS into your shop.</h2>
+          <p>If you want a cleaner point-of-sale setup for your business, start with a short conversation and we can walk through fit, workflow, and rollout.</p>
+          <p><a class="button button-primary" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Inquiry">contact@elephantpos.com</a></p>
+        </article>
+        <article class="contact-card card">
+          <h2>What to include</h2>
+          <ul>
+            <li>Your business type and number of stations.</li>
+            <li>Whether you need kitchen or receipt printer support.</li>
+            <li>Your target launch timeline.</li>
+          </ul>
+        </article>
       </div>
     </section>
   </main>
+
   <footer class="footer">
-    <div class="shell"><span>Elephant POS</span><span>Modern point-of-sale tools for growing businesses.</span></div>
+    <div class="shell">
+      <span>Elephant POS</span>
+      <span>Modern point-of-sale tools for growing businesses.</span>
+    </div>
   </footer>
 </body>
 </html>
