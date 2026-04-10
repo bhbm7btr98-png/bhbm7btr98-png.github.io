@@ -8,6 +8,7 @@
   <meta name="CocoaVersion" content="2685.4">
   <style type="text/css">
     p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
   </style>
 </head>
 <body>
@@ -16,11 +17,373 @@
 <p class="p1">&lt;head&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Elephant POS&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Elephant POS | Modern Point of Sale&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="description" content="Elephant POS helps fast-moving businesses manage orders, menus, and printer workflows from one clean point-of-sale system."&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg: #f4efe6;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--panel: rgba(255,255,255,0.84);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--ink: #1d2a23;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--muted: #5d6a62;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--line: rgba(29,42,35,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent: #1e6b50;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent-dark: #124534;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--soft: #dbeadf;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--shadow: 0 18px 50px rgba(20,34,28,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--radius: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--max: 1160px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>* { box-sizing: border-box; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: Georgia, "Times New Roman", serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
+<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at top left, rgba(185,133,47,0.16), transparent 30%),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at top right, rgba(30,107,80,0.16), transparent 25%),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(180deg, #fbf8f1 0%, var(--bg) 100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.5;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>a { color: inherit; text-decoration: none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.topbar {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: sticky;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>z-index: 10;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(12px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(244,239,230,0.82);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid rgba(29,42,35,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.topbar .shell, .footer .shell {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.topbar .shell { padding: 18px 0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.04em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.mark {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 42px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 42px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>place-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, var(--accent), var(--accent-dark));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>nav {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.96rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.button, .nav-cta {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-height: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 0 22px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-cta, .button-primary {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, var(--accent), var(--accent-dark));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.button-secondary {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--line);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,0.75);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero, section { padding: 32px 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero { padding-top: 68px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid, .feature-grid, .fit-grid, .contact-grid {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid { grid-template-columns: 1.15fr 0.85fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.fit-grid, .contact-grid { grid-template-columns: 1fr 1fr; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--panel);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(255,255,255,0.6);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-copy { padding: 46px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-panel, .feature-card, .fit-card, .contact-card { padding: 28px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.eyebrow {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 8px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: var(--soft);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent-dark);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.82rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.05em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1, h2, h3, p { margin-top: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 22px 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(2.7rem, 6vw, 5.5rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 0.94;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: -0.045em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 10ch;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>h2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(2rem, 3.4vw, 3.2rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: -0.04em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>h3 { font-size: 1.22rem; margin-bottom: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>p, li { color: var(--muted); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cta-row {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 28px 0 30px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stats {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(3, minmax(0, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--line);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,0.7);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stat strong {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.4rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.panel-tag {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 7px 11px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(185,133,47,0.14);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #7c571c;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.82rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.receipt {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #fffdf9;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(29,42,35,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.receipt-row, .receipt-total {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.receipt-row {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px dashed rgba(29,42,35,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.receipt-total {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.chip {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 14px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(219,234,223,0.8);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(30,107,80,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ul { margin: 0; padding-left: 18px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>li { margin-bottom: 10px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 26px 0 54px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.94rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.footer .shell {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid rgba(29,42,35,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 980px) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.hero-grid, .feature-grid, .fit-grid, .contact-grid {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>.topbar .shell, .footer .shell {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>align-items: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 720px) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>nav { flex-wrap: wrap; gap: 12px 18px; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.hero-copy, .hero-panel, .feature-card, .fit-card, .contact-card { padding: 22px; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.stats { grid-template-columns: 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.hero { padding-top: 30px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
 <p class="p1">&lt;/head&gt;</p>
 <p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;Elephant POS&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;p&gt;Modern point-of-sale tools for growing businesses.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header class="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shell"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a class="brand" href="#top"&gt;&lt;span class="mark"&gt;E&lt;/span&gt;&lt;span&gt;Elephant POS&lt;/span&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#features"&gt;Features&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#fit"&gt;Best Fit&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#contact"&gt;Contact&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a class="nav-cta" href="mailto:hello@elephantpos.com"&gt;Book a Demo&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main id="top" class="shell"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hero-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-copy card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="eyebrow"&gt;Built for fast-moving counters&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h1&gt;Run every order with less friction.&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;Elephant POS gives restaurants and retail teams one clean place to manage orders, menus, item customization, and printer workflows without the clutter of legacy point-of-sale software.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="cta-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a class="button button-primary" href="mailto:hello@elephantpos.com?subject=Elephant%20POS%20Demo"&gt;Schedule a Demo&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a class="button button-secondary" href="#features"&gt;See Features&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="stats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat"&gt;&lt;strong&gt;Fast tickets&lt;/strong&gt;&lt;span&gt;Designed to keep front-of-house ordering quick and readable.&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat"&gt;&lt;strong&gt;Flexible menus&lt;/strong&gt;&lt;span&gt;Categories, modifiers, and item options that fit real operations.&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat"&gt;&lt;strong&gt;Printer ready&lt;/strong&gt;&lt;span&gt;Built around dependable receipt and kitchen printer workflows.&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;aside class="hero-panel card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="panel-tag"&gt;Live-ready workflow&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="receipt"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="receipt-row"&gt;&lt;span&gt;2x Chicken Shawarma&lt;/span&gt;&lt;span&gt;$23.98&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="receipt-row"&gt;&lt;span&gt;1x Fries&lt;/span&gt;&lt;span&gt;$4.50&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="receipt-row"&gt;&lt;span&gt;3x Soft Drink&lt;/span&gt;&lt;span&gt;$7.50&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="receipt-total"&gt;&lt;span&gt;Total&lt;/span&gt;&lt;span&gt;$35.98&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="chip"&gt;&lt;strong&gt;Catalog control&lt;/strong&gt;&lt;br&gt;Keep categories, products, and pricing organized from one structured menu system.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="chip"&gt;&lt;strong&gt;Modifier support&lt;/strong&gt;&lt;br&gt;Handle add-ons, options, and order notes without slowing staff down.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="chip"&gt;&lt;strong&gt;Operational clarity&lt;/strong&gt;&lt;br&gt;Give your team a cleaner interface for high-pressure service hours.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/aside&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="features"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Everything the counter needs.&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;Elephant POS focuses on the daily work that matters most: accurate orders, fast navigation, reliable printing, and a menu your team can actually maintain.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="feature-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="feature-card card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;Order Flow That Stays Clean&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;Move from browsing categories to sending the order without fighting crowded screens or confusing steps.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="feature-card card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;Menu Editing Without the Headache&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;Add categories, update products, and fine-tune item details from a setup built for actual operators.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="feature-card card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;Printer-Centered Operations&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;Support for receipt and kitchen printer workflows keeps output part of the system, not an afterthought.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="fit"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="fit-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="fit-card card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;Best for businesses that need speed and control.&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Quick-service restaurants with modifier-heavy menus.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Counter-service concepts that need clean printer routing.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Retail or service teams that want a simple transaction flow.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="fit-card card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;Built with practical priorities.&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Fast to learn for staff.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Flexible enough for changing menus.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Structured for real front-of-house pressure.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="contact"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="contact-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="contact-card card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;Bring Elephant POS into your shop.&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;If you want a cleaner point-of-sale setup for your business, start with a short conversation and we can walk through fit, workflow, and rollout.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;a class="button button-primary" href="mailto:hello@elephantpos.com?subject=Elephant%20POS%20Inquiry"&gt;hello@elephantpos.com&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="contact-card card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2&gt;What to include&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Your business type and number of stations.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Whether you need kitchen or receipt printer support.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;Your target launch timeline.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer class="footer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="shell"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;Elephant POS&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;Modern point-of-sale tools for growing businesses.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</p>
 <p class="p1">&lt;/body&gt;</p>
 <p class="p1">&lt;/html&gt;</p>
 </body>
