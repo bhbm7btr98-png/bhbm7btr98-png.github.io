@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Elephant POS | Modern Point of Sale</title>
-  <meta name="description" content="Elephant POS helps fast-moving businesses manage orders, menus, and printer workflows from one clean point-of-sale system.">
+  <title>Elephant POS | Point of Sale for Small Business</title>
+  <meta name="description" content="Elephant POS helps small businesses manage orders, catalog, staff access, locations, reporting, and printer workflows from one clean point-of-sale system.">
   <style>
     :root {
       --bg-top: #0d121a;
@@ -18,7 +18,6 @@
       --accent-1: #92c7ff;
       --accent-2: #57b3f5;
       --accent-3: #478ce6;
-      --accent-deep: #214f8b;
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
       --radius-xl: 30px;
       --radius-lg: 24px;
@@ -27,7 +26,6 @@
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -43,10 +41,8 @@
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
     .shell {
       width: min(calc(100% - 32px), var(--max));
@@ -70,9 +66,7 @@
       gap: 18px;
     }
 
-    .topbar .shell {
-      padding: 18px 0;
-    }
+    .topbar .shell { padding: 18px 0; }
 
     .brand {
       display: inline-flex;
@@ -117,9 +111,7 @@
     }
 
     .nav-cta:hover,
-    .button:hover {
-      transform: translateY(-2px);
-    }
+    .button:hover { transform: translateY(-2px); }
 
     .nav-cta,
     .button-primary {
@@ -135,35 +127,24 @@
     }
 
     .hero,
-    section {
-      padding: 34px 0;
-    }
+    section { padding: 34px 0; }
 
-    .hero {
-      padding-top: 70px;
-    }
+    .hero { padding-top: 70px; }
 
     .hero-grid,
     .feature-grid,
+    .image-grid,
     .fit-grid,
     .contact-grid {
       display: grid;
       gap: 22px;
     }
 
-    .hero-grid {
-      grid-template-columns: 1.08fr 0.92fr;
-      align-items: stretch;
-    }
-
-    .feature-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
+    .hero-grid { grid-template-columns: 1.08fr 0.92fr; }
+    .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .image-grid,
     .fit-grid,
-    .contact-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+    .contact-grid { grid-template-columns: 1fr 1fr; }
 
     .card {
       background: linear-gradient(180deg, rgba(29, 34, 43, 0.98), rgba(20, 25, 34, 0.98));
@@ -183,16 +164,12 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
-    .hero-copy {
-      padding: 46px;
-    }
-
+    .hero-copy { padding: 46px; }
     .hero-panel,
     .feature-card,
+    .image-card,
     .fit-card,
-    .contact-card {
-      padding: 30px;
-    }
+    .contact-card { padding: 30px; }
 
     .eyebrow,
     .panel-tag {
@@ -209,12 +186,7 @@
       background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     }
 
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
+    h1, h2, h3, p { margin-top: 0; }
 
     h1 {
       margin: 24px 0 18px;
@@ -230,21 +202,10 @@
       margin-bottom: 10px;
     }
 
-    h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
+    h3 { font-size: 1.2rem; margin-bottom: 10px; }
 
-    p,
-    li,
-    nav a {
-      color: var(--muted);
-    }
-
-    .hero-copy > p {
-      font-size: 1.08rem;
-      max-width: 55ch;
-    }
+    p, li, nav a { color: var(--muted); }
+    .hero-copy > p { font-size: 1.08rem; max-width: 55ch; }
 
     .cta-row {
       display: flex;
@@ -314,26 +275,46 @@
       color: var(--ink);
     }
 
-    .chip strong,
-    .feature-card h3,
-    .fit-card h2,
-    .contact-card h2 {
+    .section-heading {
+      margin-bottom: 18px;
+      max-width: 64ch;
+    }
+
+    .image-slot {
+      margin-top: 18px;
+      min-height: 260px;
+      border-radius: 20px;
+      border: 1px dashed rgba(146, 199, 255, 0.38);
+      background:
+        linear-gradient(180deg, rgba(146, 199, 255, 0.12), rgba(255, 255, 255, 0.02));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 22px;
+    }
+
+    .image-slot strong {
+      display: block;
+      margin-bottom: 6px;
       color: var(--ink);
     }
 
-    .section-heading {
-      margin-bottom: 18px;
-      max-width: 60ch;
+    .image-hint {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 30ch;
     }
 
-    ul {
-      margin: 0;
-      padding-left: 18px;
-    }
+    .image-card p,
+    .feature-card p,
+    .fit-card p,
+    .contact-card p,
+    .contact-card li,
+    .fit-card li { color: var(--muted); }
 
-    li {
-      margin-bottom: 10px;
-    }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin-bottom: 10px; }
 
     .footer {
       padding: 28px 0 54px;
@@ -349,39 +330,24 @@
     @media (max-width: 980px) {
       .hero-grid,
       .feature-grid,
+      .image-grid,
       .fit-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .contact-grid { grid-template-columns: 1fr; }
       .topbar .shell,
-      .footer .shell {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .footer .shell { flex-direction: column; align-items: flex-start; }
     }
 
     @media (max-width: 720px) {
-      nav {
-        flex-wrap: wrap;
-        gap: 12px 18px;
-      }
-
+      nav { flex-wrap: wrap; gap: 12px 18px; }
       .hero-copy,
       .hero-panel,
       .feature-card,
+      .image-card,
       .fit-card,
-      .contact-card {
-        padding: 22px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 34px;
-      }
+      .contact-card { padding: 22px; }
+      .stats { grid-template-columns: 1fr; }
+      .hero { padding-top: 34px; }
+      .image-slot { min-height: 220px; }
     }
   </style>
 </head>
@@ -391,7 +357,7 @@
       <a class="brand" href="#top"><span class="mark">E</span><span>Elephant POS</span></a>
       <nav>
         <a href="#features">Features</a>
-        <a href="#fit">Best Fit</a>
+        <a href="#examples">Examples</a>
         <a href="#contact">Contact</a>
         <a class="nav-cta" href="mailto:contact@elephantpos.com">Book a Demo</a>
       </nav>
@@ -402,73 +368,114 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy card">
-          <span class="eyebrow">Built for fast-moving counters</span>
-          <h1>Run every order with less friction.</h1>
-          <p>Elephant POS gives restaurants and retail teams one focused place to manage orders, menus, item customization, and printer workflows without the clutter of legacy point-of-sale software.</p>
+          <span class="eyebrow">Built for small business operations</span>
+          <h1>One clean system for selling, managing, and tracking daily work.</h1>
+          <p>Elephant POS helps small businesses handle checkout, catalog management, reporting, employees, locations, and printer workflows from one focused point-of-sale app.</p>
           <div class="cta-row">
             <a class="button button-primary" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Demo">Schedule a Demo</a>
             <a class="button button-secondary" href="#features">See Features</a>
           </div>
           <div class="stats">
-            <div class="stat"><strong>Fast tickets</strong><span>Designed to keep front-of-house ordering quick and readable.</span></div>
-            <div class="stat"><strong>Flexible menus</strong><span>Categories, modifiers, and item options that fit real operations.</span></div>
-            <div class="stat"><strong>Printer ready</strong><span>Built around dependable receipt and kitchen printer workflows.</span></div>
+            <div class="stat"><strong>Faster service</strong><span>Move through orders and transactions with less clutter and fewer taps.</span></div>
+            <div class="stat"><strong>Better visibility</strong><span>Track what is selling, who is working, and how each location is performing.</span></div>
+            <div class="stat"><strong>Simpler control</strong><span>Manage products, pricing, staff access, and business settings in one place.</span></div>
           </div>
         </div>
 
         <aside class="hero-panel card">
           <span class="panel-tag">App-style workflow</span>
           <div class="receipt">
-            <div class="receipt-row"><span>2x Chicken Shawarma</span><span>$23.98</span></div>
-            <div class="receipt-row"><span>1x Fries</span><span>$4.50</span></div>
-            <div class="receipt-row"><span>3x Soft Drink</span><span>$7.50</span></div>
-            <div class="receipt-total"><span>Total</span><span>$35.98</span></div>
+            <div class="receipt-row"><span>3x Service Item A</span><span>$45.00</span></div>
+            <div class="receipt-row"><span>1x Add-on</span><span>$8.00</span></div>
+            <div class="receipt-row"><span>1x Product B</span><span>$22.50</span></div>
+            <div class="receipt-total"><span>Total</span><span>$75.50</span></div>
           </div>
-          <div class="chip"><strong>Catalog control</strong><br>Keep categories, products, and pricing organized from one structured menu system.</div>
-          <div class="chip"><strong>Modifier support</strong><br>Handle add-ons, options, and order notes without slowing staff down.</div>
-          <div class="chip"><strong>Operational clarity</strong><br>Give your team a cleaner interface for high-pressure service hours.</div>
+          <div class="chip"><strong>Catalog control</strong><br>Organize categories, products, services, pricing, and options from one structured system.</div>
+          <div class="chip"><strong>Reporting visibility</strong><br>Review sales activity and summaries without exporting your business into separate tools.</div>
+          <div class="chip"><strong>Operational clarity</strong><br>Give your team a cleaner interface for daily transactions, employee access, and multi-location work.</div>
         </aside>
       </div>
     </section>
 
     <section id="features">
       <div class="section-heading">
-        <h2>Everything the counter needs.</h2>
-        <p>Elephant POS focuses on the daily work that matters most: accurate orders, fast navigation, reliable printing, and a menu your team can actually maintain.</p>
+        <h2>Features built around day-to-day business operations.</h2>
+        <p>Elephant POS is designed for small businesses that need a modern point of sale without unnecessary complexity. Whether you sell food, retail products, services, or a mix of all three, the core tools stay practical and easy to use.</p>
       </div>
       <div class="feature-grid">
         <article class="feature-card card">
-          <h3>Order Flow That Stays Clean</h3>
-          <p>Move from browsing categories to sending the order without fighting crowded screens or confusing steps.</p>
+          <h3>Catalog and Menu Management</h3>
+          <p>Create categories, add products or services, adjust pricing, and keep your offerings organized. If your business uses a menu-style layout, you can present items in a way that is fast for staff to browse and select.</p>
         </article>
         <article class="feature-card card">
-          <h3>Menu Editing Without the Headache</h3>
-          <p>Add categories, update products, and fine-tune item details from a setup built for actual operators.</p>
+          <h3>Sales Summary Reporting</h3>
+          <p>Review sales activity, order totals, and summary reporting from inside the app so you can quickly understand how the day, shift, or location is performing.</p>
         </article>
         <article class="feature-card card">
-          <h3>Printer-Centered Operations</h3>
-          <p>Support for Epson and Star printer workflows keeps output part of the system, not an afterthought.</p>
+          <h3>Employees and Locations</h3>
+          <p>Support employee access, owner controls, and multiple business locations so you can keep operations organized as your team grows.</p>
         </article>
       </div>
     </section>
 
-    <section id="fit">
+    <section id="examples">
+      <div class="section-heading">
+        <h2>Replace these placeholders with real app screenshots.</h2>
+        <p>The sections below are intentionally left ready for screenshots. You can drop in real images from the app for your menu, sales summary report, and employees or locations screens.</p>
+      </div>
+      <div class="image-grid">
+        <article class="image-card card">
+          <h3>Menu or Catalog Example</h3>
+          <p>Use this section to show how products, services, or menu items are organized inside Elephant POS.</p>
+          <div class="image-slot">
+            <div>
+              <strong>Add menu image here</strong>
+              <div class="image-hint">Replace this placeholder with a screenshot such as <code>images/menu-example.png</code>.</div>
+            </div>
+          </div>
+        </article>
+        <article class="image-card card">
+          <h3>Sales Summary Report Example</h3>
+          <p>Use this section to show your sales summary or reporting screen so visitors can see what kind of visibility Elephant POS provides.</p>
+          <div class="image-slot">
+            <div>
+              <strong>Add sales summary image here</strong>
+              <div class="image-hint">Replace this placeholder with a screenshot such as <code>images/sales-summary.png</code>.</div>
+            </div>
+          </div>
+        </article>
+        <article class="image-card card">
+          <h3>Employees and Locations Example</h3>
+          <p>Use this section to show employee access management, owner controls, or multi-location settings.</p>
+          <div class="image-slot">
+            <div>
+              <strong>Add employees or locations image here</strong>
+              <div class="image-hint">Replace this placeholder with a screenshot such as <code>images/employees-locations.png</code>.</div>
+            </div>
+          </div>
+        </article>
+        <article class="image-card card">
+          <h3>Who Elephant POS Fits</h3>
+          <p>Elephant POS works well for many small businesses, including quick-service shops, retail counters, service businesses, specialty stores, and growing operations that want a cleaner way to manage day-to-day sales and staff workflows.</p>
+          <div class="image-slot">
+            <div>
+              <strong>Optional fourth screenshot</strong>
+              <div class="image-hint">You can use this space for checkout flow, printer setup, or another important screen.</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
       <div class="fit-grid">
         <article class="fit-card card">
-          <h2>Best for businesses that need speed and control.</h2>
-          <ul>
-            <li>Quick-service restaurants with modifier-heavy menus.</li>
-            <li>Counter-service concepts that need clean printer routing.</li>
-            <li>Retail or service teams that want a simple transaction flow.</li>
-          </ul>
+          <h2>Clear enough for staff. Strong enough for owners.</h2>
+          <p>Elephant POS is designed to reduce friction for the person using it at the counter while still giving business owners the controls and visibility they need behind the scenes.</p>
         </article>
         <article class="fit-card card">
-          <h2>Built with practical priorities.</h2>
-          <ul>
-            <li>Fast to learn for staff.</li>
-            <li>Flexible enough for changing menus.</li>
-            <li>Structured for real front-of-house pressure.</li>
-          </ul>
+          <h2>Focused software for real small business work.</h2>
+          <p>Instead of overloading the experience with features you will never use, Elephant POS focuses on the tools that matter most: selling, organizing, reporting, and keeping the business running smoothly.</p>
         </article>
       </div>
     </section>
@@ -476,16 +483,16 @@
     <section id="contact">
       <div class="contact-grid">
         <article class="contact-card card">
-          <h2>Bring Elephant POS into your shop.</h2>
+          <h2>Bring Elephant POS into your business.</h2>
           <p>If you want a cleaner point-of-sale setup for your business, start with a short conversation and we can walk through fit, workflow, and rollout.</p>
           <p><a class="button button-primary" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Inquiry">contact@elephantpos.com</a></p>
         </article>
         <article class="contact-card card">
-          <h2>What to include</h2>
+          <h2>How to add your screenshots later</h2>
           <ul>
-            <li>Your business type and number of stations.</li>
-            <li>Whether you need kitchen or receipt printer support.</li>
-            <li>Your target launch timeline.</li>
+            <li>Create a folder named <code>images</code> inside your website folder.</li>
+            <li>Export screenshots from the app and save them there.</li>
+            <li>Replace each placeholder block with an <code>&lt;img&gt;</code> tag pointing to the image file.</li>
           </ul>
         </article>
       </div>
@@ -495,7 +502,7 @@
   <footer class="footer">
     <div class="shell">
       <span>Elephant POS</span>
-      <span>Modern point-of-sale tools for growing businesses.</span>
+      <span>Modern point-of-sale tools for growing small businesses.</span>
     </div>
   </footer>
 </body>
