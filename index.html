@@ -5,561 +5,154 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Elephant POS | Point of Sale for Small Business</title>
   <meta name="description" content="Elephant POS helps small businesses manage orders, catalog, staff access, locations, reporting, and printer workflows from one clean point-of-sale system.">
-  <style>
-    :root {
-      --bg-top: #0d121a;
-      --bg-mid: #131c2b;
-      --bg-bottom: #1e2c4a;
-      --panel: #1c212b;
-      --panel-2: #282d38;
-      --panel-line: rgba(255, 255, 255, 0.08);
-      --ink: #f5f8ff;
-      --muted: rgba(226, 235, 255, 0.72);
-      --accent-1: #92c7ff;
-      --accent-2: #57b3f5;
-      --accent-3: #478ce6;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
-      --radius-xl: 30px;
-      --radius-lg: 24px;
-      --radius-md: 18px;
-      --max: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 15% 12%, rgba(146, 199, 255, 0.18), transparent 22%),
-        radial-gradient(circle at 88% 14%, rgba(87, 179, 245, 0.18), transparent 20%),
-        radial-gradient(circle at 50% 80%, rgba(71, 140, 230, 0.14), transparent 30%),
-        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-bottom) 100%);
-      line-height: 1.5;
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .shell {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(9, 13, 20, 0.46);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .topbar .shell,
-    .footer .shell {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .topbar .shell { padding: 18px 0; }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.92rem;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-    }
-
-    .mark {
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  display: block;
-  object-fit: contain;
-  box-shadow: 0 4px 12px rgba(87, 179, 245, 0.14);
-}
-
-    nav {
-      display: flex;
-      gap: 22px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 0.97rem;
-    }
-
-    .nav-cta,
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 160ms ease, opacity 160ms ease, background 160ms ease;
-    }
-
-    .nav-cta:hover,
-    .button:hover { transform: translateY(-2px); }
-
-    .nav-cta,
-    .button-primary {
-      color: #08111d;
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
-      box-shadow: 0 14px 30px rgba(87, 179, 245, 0.24);
-    }
-
-    .button-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--ink);
-    }
-
-    .hero,
-    section { padding: 42px 0; }
-
-    .hero { padding-top: 70px; }
-
-    section + section {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    #examples,
-    #contact {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0));
-    }
-
-    .hero-grid,
-    .feature-grid,
-    .image-grid,
-    .fit-grid,
-    .contact-grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .hero-device-stack {
-      display: grid;
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .hero-grid { grid-template-columns: 1.08fr 0.92fr; align-items: stretch; }
-    .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .image-grid,
-    .fit-grid,
-    .contact-grid { grid-template-columns: 1fr 1fr; }
-
-    .card {
-      background: linear-gradient(180deg, rgba(29, 34, 43, 0.98), rgba(20, 25, 34, 0.98));
-      border: 1px solid var(--panel-line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    }
-
-    .hero-copy { padding: 50px; }
-    .hero-panel,
-    .feature-card,
-    .image-card,
-    .fit-card,
-    .contact-card { padding: 32px; }
-
-    .image-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 100%;
-    }
-
-    .image-card .hero-device-stack {
-      margin-top: 22px;
-    }
-
-    .faq-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .faq-item {
-      padding: 0;
-    }
-
-    .faq-item summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 24px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq-item summary::after {
-      content: "+";
-      flex-shrink: 0;
-      font-size: 1.4rem;
-      line-height: 1;
-      color: var(--accent-1);
-    }
-
-    .faq-item[open] summary::after {
-      content: "−";
-    }
-
-    .faq-answer {
-      padding: 0 28px 24px;
-      color: var(--muted);
-      max-width: 70ch;
-    }
-
-    .howto-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .howto-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 170px;
-      padding: 28px 22px;
-      text-align: center;
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.3;
-      background: linear-gradient(180deg, rgba(36, 42, 52, 0.98), rgba(22, 28, 38, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
-      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
-    }
-
-    .howto-link:hover {
-      transform: translateY(-3px);
-      border-color: rgba(146, 199, 255, 0.22);
-      background: linear-gradient(180deg, rgba(43, 50, 61, 0.98), rgba(25, 31, 42, 0.98));
-    }
-
-    .eyebrow,
-    .panel-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #08111d;
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
-
-    h1 {
-      margin: 24px 0 18px;
-      font-size: clamp(2.8rem, 6vw, 5.6rem);
-      line-height: 0.92;
-      letter-spacing: -0.055em;
-      max-width: 10ch;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 3.4vw, 3.1rem);
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
-    }
-
-    h3 { font-size: 1.2rem; margin-bottom: 10px; }
-
-    p, li, nav a { color: var(--muted); }
-    .hero-copy > p { font-size: 1.08rem; max-width: 55ch; }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin: 28px 0 30px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(180deg, rgba(146, 199, 255, 0.14), rgba(255, 255, 255, 0.03));
-      border: 1px solid rgba(146, 199, 255, 0.14);
-    }
-
-    .stat strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1.35rem;
-      color: var(--ink);
-    }
-
-    .hero-panel {
-      background:
-        radial-gradient(circle at top right, rgba(146, 199, 255, 0.24), transparent 34%),
-        linear-gradient(180deg, rgba(36, 43, 56, 0.98), rgba(21, 27, 36, 0.98));
-    }
-
-    .receipt {
-      padding: 22px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(116, 184, 255, 0.18), rgba(71, 140, 230, 0.08));
-      border: 1px solid rgba(146, 199, 255, 0.22);
-      margin: 18px 0 14px;
-    }
-
-    .receipt-row,
-    .receipt-total {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .receipt-row {
-      padding: 12px 0;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.16);
-    }
-
-    .receipt-total {
-      padding-top: 14px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .chip {
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(53, 82, 124, 0.72), rgba(41, 57, 84, 0.72));
-      border: 1px solid rgba(146, 199, 255, 0.16);
-      margin-top: 12px;
-      color: var(--ink);
-    }
-
-    .section-heading {
-      margin-bottom: 18px;
-      max-width: 64ch;
-    }
-
-    .image-slot {
-      margin-top: 18px;
-      min-height: 300px;
-      border-radius: 20px;
-      border: 1px dashed rgba(146, 199, 255, 0.38);
-      background:
-        linear-gradient(180deg, rgba(146, 199, 255, 0.12), rgba(255, 255, 255, 0.02));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 22px;
-    }
-
-
-    .image-slot strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--ink);
-    }
-
-    .image-slot img {
-      display: block;
-      margin: 0 auto;
-    }
-
-    .image-hint {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 30ch;
-    }
-
-    .image-card p,
-    .feature-card p,
-    .fit-card p,
-    .contact-card p,
-    .contact-card li,
-    .fit-card li { color: var(--muted); }
-
-    ul { margin: 0; padding-left: 18px; }
-    li { margin-bottom: 10px; }
-
-    .footer {
-      padding: 28px 0 54px;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .footer .shell {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 24px;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .feature-grid,
-      .image-grid,
-      .fit-grid,
-      .contact-grid { grid-template-columns: 1fr; }
-      .howto-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .topbar .shell,
-      .footer .shell { flex-direction: column; align-items: flex-start; }
-    }
-
-    @media (max-width: 720px) {
-      nav { flex-wrap: wrap; gap: 12px 18px; }
-      .hero-copy,
-      .hero-panel,
-      .feature-card,
-      .image-card,
-      .fit-card,
-      .contact-card { padding: 22px; }
-      .stats { grid-template-columns: 1fr; }
-      .hero { padding-top: 34px; }
-      .image-slot { min-height: 220px; }
-      .howto-grid { grid-template-columns: 1fr; }
-      .howto-link { min-height: 130px; }
-    }
-  </style>
+  <link rel="stylesheet" href="/styles/site.css">
 </head>
 <body>
-  <header class="topbar">
+  <header class="site-header">
     <div class="shell">
-      <a class="brand" href="#top"><img class="mark" src="images/icon.png" alt="Elephant POS icon"><span>Elephant POS</span></a>
-      <nav>
+      <a class="brand" href="/"><img class="mark" src="/images/icon.png" alt="Elephant POS icon"><span>Elephant POS</span></a>
+      <nav class="site-nav">
         <a href="#features">Features</a>
-        <a href="#examples">Examples</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="mailto:contact@elephantpos.com">Book a Demo</a>
+        <a href="#how-to">How To</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:contact@elephantpos.com">Contact</a>
+        <a class="nav-cta" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Demo">Schedule a Demo</a>
       </nav>
     </div>
   </header>
 
-  <main id="top" class="shell">
+  <main id="top" class="site-main shell">
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-copy card">
-          <span class="eyebrow">Built for small business operations</span>
-          <h1>One clean system for selling, managing, and tracking daily work.</h1>
-          <p>Elephant POS helps small businesses run checkout, catalog management, reporting, employees, locations, and printer workflows from one focused point-of-sale app.</p>
+          <span class="eyebrow">Built for real counter work</span>
+          <h1>Modern point-of-sale software without the clutter.</h1>
+          <p>Elephant POS gives small businesses one focused system for checkout, reporting, staff access, location management, printer workflows, and day-to-day control.</p>
           <div class="cta-row">
-            <a class="button button-primary" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Demo">Schedule a Demo</a>
-            <a class="button button-secondary" href="#features">See Features</a>
+            <a class="button button-primary" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Walkthrough">Schedule a walkthrough</a>
+            <a class="button button-secondary" href="#how-to">Explore guides</a>
           </div>
           <div class="stats">
-            <div class="stat"><strong>Faster service</strong><span>Move through orders and transactions with less clutter and fewer taps.</span></div>
-            <div class="stat"><strong>Better visibility</strong><span>Track what is selling, who is working, and how each location is performing.</span></div>
-            <div class="stat"><strong>Simpler control</strong><span>Manage products, pricing, staff access, and business settings in one place.</span></div>
+            <div class="stat">
+              <strong>Faster service</strong>
+              <span>Move through orders and transactions with less friction and fewer taps.</span>
+            </div>
+            <div class="stat">
+              <strong>Stronger control</strong>
+              <span>Manage employees, owner access, locations, and pricing from one clean system.</span>
+            </div>
+            <div class="stat">
+              <strong>Clear reporting</strong>
+              <span>Review sales activity quickly without digging through a bloated interface.</span>
+            </div>
           </div>
         </div>
 
         <aside class="hero-panel card">
           <span class="panel-tag">Built for iPhone and iPad</span>
           <div class="hero-device-stack">
-            <div class="image-card" style="padding:0; background:none; border:none; box-shadow:none;">
-              <div class="image-slot" style="padding: 20px; min-height: 360px;">
-                <img src="images/Ipad-menu.png" alt="Elephant POS on iPad" style="width: 100%; max-width: 560px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
-              </div>
+            <div class="device-frame ipad">
+              <img src="/images/Ipad-menu.png" alt="Elephant POS on iPad">
             </div>
-            <div class="image-card" style="padding:0; background:none; border:none; box-shadow:none;">
-              <div class="image-slot" style="padding: 18px; min-height: 280px;">
-                <img src="images/Iphone-menu.png" alt="Elephant POS on iPhone" style="width: 100%; max-width: 220px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
-              </div>
+            <div class="device-frame iphone">
+              <img src="/images/Iphone-menu.png" alt="Elephant POS on iPhone">
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section id="features">
+    <section>
       <div class="section-heading">
-        <h2>Features built around day-to-day business operations.</h2>
+        <h2>Built for businesses that need speed, clarity, and control.</h2>
+        <p>Elephant POS is designed for small operations that need practical checkout tools, cleaner staff workflows, and better visibility without unnecessary complexity.</p>
+      </div>
+      <div class="trust-grid">
+        <article class="trust-card card">
+          <strong>iPhone and iPad ready</strong>
+          <p>Use the same system across the devices that fit your counter and back-office setup.</p>
+        </article>
+        <article class="trust-card card">
+          <strong>Receipt printer support</strong>
+          <p>Connect supported printers on your network and manage them directly in settings.</p>
+        </article>
+        <article class="trust-card card">
+          <strong>Owner and employee controls</strong>
+          <p>Separate staff access from owner actions with PIN-based workflows and access management.</p>
+        </article>
+        <article class="trust-card card">
+          <strong>Multi-location support</strong>
+          <p>Keep growing operations organized with location-level control and reporting visibility.</p>
+        </article>
       </div>
     </section>
 
-    <section id="examples">
-      <div class="image-grid">
-        <article class="image-card card">
-          <h3>Catalog and Menu Management</h3>
-          <p>Show how products, services, and menu-style items are organized so staff can browse and select them quickly.</p>
+    <section id="features">
+      <div class="section-heading">
+        <h2>Core workflows, shown clearly.</h2>
+        <p>The product pages should feel like the app itself: structured, fast to scan, and focused on what matters operationally.</p>
+      </div>
+      <div class="showcase-grid">
+        <article class="showcase-card card">
+          <div>
+            <div class="showcase-meta"><span>Catalog</span><span>iPhone + iPad</span></div>
+            <h3>Catalog and Menu Management</h3>
+            <p>Create categories, add items or services, adjust pricing, and keep your selling layout easy for staff to work through.</p>
+          </div>
           <div class="hero-device-stack">
-            <div class="image-slot" style="padding: 18px; min-height: 300px;">
-              <img src="images/Iphone-menu.png" alt="Elephant POS catalog on iPhone" style="width: 100%; max-width: 220px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
+            <div class="device-frame iphone">
+              <img src="/images/Iphone-menu.png" alt="Elephant POS catalog on iPhone">
             </div>
-            <div class="image-slot" style="padding: 20px; min-height: 360px;">
-              <img src="images/Ipad-menu.png" alt="Elephant POS catalog on iPad" style="width: 100%; max-width: 560px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
+            <div class="device-frame ipad">
+              <img src="/images/Ipad-menu.png" alt="Elephant POS catalog on iPad">
             </div>
           </div>
         </article>
-        <article class="image-card card">
-          <h3>Sales Summary Reporting</h3>
-          <p>Show how Elephant POS turns daily activity into useful reporting that is quick to review on either device.</p>
+
+        <article class="showcase-card card">
+          <div>
+            <div class="showcase-meta"><span>Reporting</span><span>Daily visibility</span></div>
+            <h3>Sales Summary Reporting</h3>
+            <p>Review daily totals, shifts, and sales activity from a layout that is fast to read on both devices.</p>
+          </div>
           <div class="hero-device-stack">
-            <div class="image-slot" style="padding: 18px; min-height: 300px;">
-              <img src="images/iphone-sales-summary-report.png" alt="Elephant POS sales summary on iPhone" style="width: 100%; max-width: 220px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
+            <div class="device-frame iphone">
+              <img src="/images/iphone-sales-summary-report.png" alt="Elephant POS sales summary on iPhone">
             </div>
-            <div class="image-slot" style="padding: 20px; min-height: 360px;">
-              <img src="images/ipad-sales-summary-report.png" alt="Elephant POS sales summary on iPad" style="width: 100%; max-width: 560px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
+            <div class="device-frame ipad">
+              <img src="/images/ipad-sales-summary-report.png" alt="Elephant POS sales summary on iPad">
             </div>
           </div>
         </article>
-        <article class="image-card card">
-          <h3>Employees and Locations</h3>
-          <p>Show employee access management, owner controls, and multi-location settings in a layout that stays organized and easy to navigate.</p>
+
+        <article class="showcase-card card">
+          <div>
+            <div class="showcase-meta"><span>Access</span><span>Operations</span></div>
+            <h3>Employees and Locations</h3>
+            <p>Manage employee access, owner controls, and multiple locations from one organized interface.</p>
+          </div>
           <div class="hero-device-stack">
-            <div class="image-slot" style="padding: 18px; min-height: 300px;">
-              <img src="images/iphone-location-employee.png" alt="Elephant POS employees and locations on iPhone" style="width: 100%; max-width: 220px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
+            <div class="device-frame iphone">
+              <img src="/images/iphone-location-employee.png" alt="Elephant POS employees and locations on iPhone">
             </div>
-            <div class="image-slot" style="padding: 20px; min-height: 360px;">
-              <img src="images/ipad-location-employee.png" alt="Elephant POS employees and locations on iPad" style="width: 100%; max-width: 560px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
+            <div class="device-frame ipad">
+              <img src="/images/ipad-location-employee.png" alt="Elephant POS employees and locations on iPad">
             </div>
           </div>
         </article>
-        <article class="image-card card">
-          <h3>Live Receipt Editing</h3>
-          <p>Show how staff can review and update receipt details in real time with a layout that stays clean on both iPhone and iPad.</p>
+
+        <article class="showcase-card card">
+          <div>
+            <div class="showcase-meta"><span>Checkout</span><span>Editable receipts</span></div>
+            <h3>Live Receipt Editing</h3>
+            <p>Update receipt details in real time before finalizing the sale, with a layout that stays clean on both screen sizes.</p>
+          </div>
           <div class="hero-device-stack">
-            <div class="image-slot" style="padding: 18px; min-height: 300px;">
-              <img src="images/iphone-live-receipt-editing.png" alt="Elephant POS live receipt editing on iPhone" style="width: 100%; max-width: 220px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
+            <div class="device-frame iphone">
+              <img src="/images/iphone-live-receipt-editing.png" alt="Elephant POS live receipt editing on iPhone">
             </div>
-            <div class="image-slot" style="padding: 20px; min-height: 360px;">
-              <img src="images/ipad-live-receipt-editing.png" alt="Elephant POS live receipt editing on iPad" style="width: 100%; max-width: 560px; border-radius: 24px; border: 1px solid rgba(146, 199, 255, 0.24); box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);">
+            <div class="device-frame ipad">
+              <img src="/images/ipad-live-receipt-editing.png" alt="Elephant POS live receipt editing on iPad">
             </div>
           </div>
         </article>
@@ -567,14 +160,17 @@
     </section>
 
     <section>
-      <div class="fit-grid">
-        <article class="fit-card card">
-          <h2>Clear enough for staff. Strong enough for owners.</h2>
-          <p>Elephant POS is designed to reduce friction for the person handling the sale while still giving owners the controls and visibility they need behind the scenes.</p>
+      <div class="section-heading">
+        <h2>Why Elephant POS feels different.</h2>
+      </div>
+      <div class="value-grid">
+        <article class="value-card card">
+          <h3>Clear enough for staff. Strong enough for owners.</h3>
+          <p>The person taking the order should move quickly. The owner should still have the controls and visibility needed to run the business properly.</p>
         </article>
-        <article class="fit-card card">
-          <h2>Focused software for real small business work.</h2>
-          <p>Instead of overloading the experience with features you will never use, Elephant POS focuses on the tools that matter most: selling, organizing, reporting, and keeping the business running smoothly.</p>
+        <article class="value-card card">
+          <h3>Focused software for real small business work.</h3>
+          <p>Instead of filling the experience with low-value features, Elephant POS stays focused on selling, organizing, reporting, and keeping daily operations tight.</p>
         </article>
       </div>
     </section>
@@ -582,16 +178,49 @@
     <section id="how-to">
       <div class="section-heading">
         <h2>How to</h2>
+        <p>Product guides for the setup steps businesses usually need first.</p>
       </div>
       <div class="howto-grid">
-        <a class="howto-link" href="/how-to/create-account/">Create an account</a>
-        <a class="howto-link" href="/how-to/create-categories-and-items/">Create Categories and items</a>
-        <a class="howto-link" href="/how-to/setup-reset-owner-pin/">Setup/Reset Owner's PIN</a>
-        <a class="howto-link" href="/how-to/setup-employees-and-pins/">Setup employees and their PIN's</a>
-        <a class="howto-link" href="/how-to/setup-locations/">Setup locations</a>
-        <a class="howto-link" href="/how-to/customize-receipts/">Customize receipts</a>
-        <a class="howto-link" href="/how-to/start-close-shifts/">Start/Close shifts</a>
-        <a class="howto-link" href="/how-to/setup-tax-and-currency/">Setup tax and currency</a>
+        <a class="howto-link" href="/how-to/create-account/">
+          <span class="howto-index">01</span>
+          <strong>Create an account</strong>
+          <span>Start with email registration and sign-in.</span>
+        </a>
+        <a class="howto-link" href="/how-to/create-categories-and-items/">
+          <span class="howto-index">02</span>
+          <strong>Create Categories and items</strong>
+          <span>Build your menu and add modifiers.</span>
+        </a>
+        <a class="howto-link" href="/how-to/setup-reset-owner-pin/">
+          <span class="howto-index">03</span>
+          <strong>Setup/Reset Owner's PIN</strong>
+          <span>Protect owner actions and recovery.</span>
+        </a>
+        <a class="howto-link" href="/how-to/setup-employees-and-pins/">
+          <span class="howto-index">04</span>
+          <strong>Setup employees and their PIN's</strong>
+          <span>Create staff access for daily use.</span>
+        </a>
+        <a class="howto-link" href="/how-to/setup-locations/">
+          <span class="howto-index">05</span>
+          <strong>Setup locations</strong>
+          <span>Organize multiple business locations.</span>
+        </a>
+        <a class="howto-link" href="/how-to/customize-receipts/">
+          <span class="howto-index">06</span>
+          <strong>Customize receipts</strong>
+          <span>Adjust the printed customer receipt.</span>
+        </a>
+        <a class="howto-link" href="/how-to/start-close-shifts/">
+          <span class="howto-index">07</span>
+          <strong>Start/Close shifts</strong>
+          <span>Track staff shifts and daily flow.</span>
+        </a>
+        <a class="howto-link" href="/how-to/setup-tax-and-currency/">
+          <span class="howto-index">08</span>
+          <strong>Setup tax and currency</strong>
+          <span>Configure taxes and selling defaults.</span>
+        </a>
       </div>
     </section>
 
@@ -651,20 +280,33 @@
       </div>
     </section>
 
-    <section class="final-cta">
-      <div class="contact-card card" style="text-align:center;">
-        <h2>Want to see if Elephant POS fits your business?</h2>
-        <p>Contact us to schedule a walkthrough and see how Elephant POS can support your daily operations.</p>
-        <p><a class="button button-primary" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Walkthrough">Contact Us</a></p>
+    <section id="contact">
+      <div class="final-card card">
+        <span class="eyebrow">Ready to talk?</span>
+        <h2>See whether Elephant POS fits your business before rollout.</h2>
+        <p>Contact us for a walkthrough of setup, printers, employee access, and daily operating flow. We can talk through fit before you commit time to implementation.</p>
+        <div class="final-actions">
+          <a class="button button-primary" href="mailto:contact@elephantpos.com?subject=Elephant%20POS%20Walkthrough">Talk about your setup</a>
+          <a class="button button-secondary" href="#how-to">Browse guides first</a>
+        </div>
       </div>
     </section>
-
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="shell">
-      <span>Elephant POS</span>
-      <span>Modern point-of-sale tools for growing small businesses.</span>
+      <div class="footer-grid">
+        <div>
+          <strong>Elephant POS</strong>
+          <p>Modern point-of-sale tools for growing small businesses.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#how-to">How To</a>
+          <a href="#faq">FAQ</a>
+          <a href="mailto:contact@elephantpos.com">contact@elephantpos.com</a>
+        </div>
+      </div>
     </div>
   </footer>
 </body>
