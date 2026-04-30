@@ -37,6 +37,7 @@ body {
         linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-bottom) 100%);
     line-height: 1.5;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a {
@@ -106,6 +107,8 @@ p, li, nav a {
     display: flex;
     gap: 22px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     color: var(--muted);
     font-size: 0.97rem;
 }
@@ -328,11 +331,27 @@ p, li, nav a {
     font-size: 1rem;
 }
 
+.stripe-status-card p {
+    max-width: 58ch;
+}
+
 .stripe-status-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
     margin-top: 28px;
+}
+
+.stripe-status-actions .button {
+    min-width: 210px;
+}
+
+.stripe-status-callout {
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(146, 199, 255, 0.12);
+    border: 1px solid rgba(146, 199, 255, 0.18);
+    color: var(--ink);
 }
 
 .stripe-status-side h2 {
@@ -640,6 +659,10 @@ p, li, nav a {
         grid-template-columns: 1fr;
     }
 
+    .stripe-status-layout {
+        grid-template-columns: 1fr;
+    }
+
     .howto-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -648,6 +671,10 @@ p, li, nav a {
     .site-footer .shell {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .site-nav {
+        justify-content: flex-start;
     }
 }
 
@@ -690,5 +717,56 @@ p, li, nav a {
 
     .howto-link {
         min-height: 150px;
+    }
+
+    .stripe-status-card,
+    .stripe-status-side {
+        padding: 24px;
+    }
+
+    .stripe-status-actions {
+        flex-direction: column;
+    }
+
+    .stripe-status-actions .button {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .shell {
+        width: min(calc(100% - 20px), var(--max));
+    }
+
+    .site-header .shell {
+        padding: 14px 0;
+    }
+
+    .brand {
+        font-size: 0.84rem;
+        letter-spacing: 0.06em;
+    }
+
+    .mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+    }
+
+    .hero-copy h1,
+    .guide-header h1,
+    .stripe-status-card h1 {
+        max-width: none;
+    }
+
+    .faq-item summary,
+    .faq-answer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .site-footer {
+        padding-bottom: 34px;
     }
 }

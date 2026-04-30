@@ -6,6 +6,21 @@
   <title>Stripe Setup Complete | Elephant POS</title>
   <meta name="description" content="Stripe onboarding return page for Elephant POS merchants.">
   <link rel="stylesheet" href="/styles/site.css">
+  <script>
+    const elephantPOSReturnURL = "onepoint://stripe/return";
+
+    function openElephantPOS() {
+      if (document.visibilityState !== "hidden") {
+        window.location.replace(elephantPOSReturnURL);
+      }
+    }
+
+    window.addEventListener("load", function () {
+      openElephantPOS();
+      window.setTimeout(openElephantPOS, 900);
+      window.setTimeout(openElephantPOS, 1800);
+    });
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -22,10 +37,11 @@
     <section class="stripe-status-layout">
       <article class="card stripe-status-card">
         <span class="eyebrow">Stripe Setup</span>
-        <h1>Return to Elephant POS</h1>
-        <p>Stripe has finished this step. Go back to the Elephant POS app and tap <strong>Refresh Stripe Status</strong> to confirm the merchant account is connected.</p>
+        <h1>Returning to Elephant POS</h1>
+        <p>This page should reopen Elephant POS automatically so the app can refresh Stripe status and continue Terminal and Tap to Pay setup.</p>
+        <p class="stripe-status-callout">If the app does not reopen within a second, use the button below.</p>
         <div class="stripe-status-actions">
-          <a class="button button-primary" href="/">Back to elephantpos.com</a>
+          <a class="button button-primary" href="onepoint://stripe/return">Open Elephant POS</a>
           <a class="button button-secondary" href="mailto:contact@elephantpos.com?subject=Stripe%20Setup%20Question">Need help?</a>
         </div>
       </article>
@@ -33,10 +49,10 @@
       <aside class="card stripe-status-side">
         <h2>Next in the app</h2>
         <ol class="stripe-status-list">
-          <li>Open Elephant POS.</li>
-          <li>Go to <strong>Settings</strong>.</li>
-          <li>Tap <strong>Refresh Stripe Status</strong>.</li>
-          <li>Continue with Terminal location and reader setup.</li>
+          <li>Return to Elephant POS.</li>
+          <li>Let the app refresh Stripe onboarding status.</li>
+          <li>Confirm your Stripe Terminal location.</li>
+          <li>Continue with Tap to Pay setup on this iPhone.</li>
         </ol>
       </aside>
     </section>

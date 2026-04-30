@@ -6,6 +6,21 @@
   <title>Resume Stripe Setup | Elephant POS</title>
   <meta name="description" content="Stripe onboarding refresh page for Elephant POS merchants.">
   <link rel="stylesheet" href="/styles/site.css">
+  <script>
+    const elephantPOSRefreshURL = "onepoint://stripe/refresh";
+
+    function openElephantPOS() {
+      if (document.visibilityState !== "hidden") {
+        window.location.replace(elephantPOSRefreshURL);
+      }
+    }
+
+    window.addEventListener("load", function () {
+      openElephantPOS();
+      window.setTimeout(openElephantPOS, 900);
+      window.setTimeout(openElephantPOS, 1800);
+    });
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -22,20 +37,21 @@
     <section class="stripe-status-layout">
       <article class="card stripe-status-card">
         <span class="eyebrow">Stripe Setup</span>
-        <h1>Resume setup from the app</h1>
-        <p>This Stripe onboarding link expired or needs to be reopened. Return to Elephant POS and tap <strong>Connect Stripe</strong> again to generate a fresh setup link.</p>
+        <h1>Refreshing setup in Elephant POS</h1>
+        <p>Stripe needs Elephant POS to generate a fresh onboarding session. This page should reopen the app automatically and restart the secure setup flow.</p>
+        <p class="stripe-status-callout">If Elephant POS does not reopen, use the button below.</p>
         <div class="stripe-status-actions">
-          <a class="button button-primary" href="/">Back to elephantpos.com</a>
+          <a class="button button-primary" href="onepoint://stripe/refresh">Open Elephant POS</a>
           <a class="button button-secondary" href="mailto:contact@elephantpos.com?subject=Stripe%20Onboarding%20Refresh">Contact support</a>
         </div>
       </article>
 
       <aside class="card stripe-status-side">
-        <h2>If the page keeps coming back here</h2>
+        <h2>If you come back here again</h2>
         <ul class="stripe-status-list">
-          <li>Open Elephant POS and sign in again.</li>
+          <li>Open Elephant POS and sign in again if needed.</li>
           <li>Go to <strong>Settings</strong>.</li>
-          <li>Tap <strong>Connect Stripe</strong> for a fresh onboarding link.</li>
+          <li>Tap <strong>Finish Stripe Setup</strong> for a fresh onboarding link.</li>
           <li>If needed, email support and mention Stripe onboarding refresh.</li>
         </ul>
       </aside>
