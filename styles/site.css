@@ -306,7 +306,9 @@ p, li, nav a {
 }
 
 .device-frame.feature-device {
-    min-height: 340px;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
 }
 
 .stripe-page {
@@ -385,6 +387,13 @@ p, li, nav a {
 .device-frame.ipad img {
     width: 100%;
     max-width: 560px;
+}
+
+.device-frame.feature-device img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
 }
 
 .cta-row {
