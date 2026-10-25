@@ -154,6 +154,44 @@ p, li, nav a {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.legal-page {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.legal-card {
+    padding: 40px;
+}
+
+.prose {
+    max-width: 78ch;
+}
+
+.prose h2 {
+    margin: 32px 0 12px;
+    font-size: 1.35rem;
+    line-height: 1.2;
+}
+
+.prose p + p,
+.prose p + ul,
+.prose ul + p,
+.prose ul + ul {
+    margin-top: 14px;
+}
+
+.prose ul {
+    padding-left: 20px;
+}
+
+.prose li + li {
+    margin-top: 10px;
+}
+
+.prose strong {
+    color: var(--ink);
+}
+
 .card {
     background: linear-gradient(180deg, rgba(29, 34, 43, 0.98), rgba(20, 25, 34, 0.98));
     border: 1px solid var(--panel-line);
@@ -258,6 +296,57 @@ p, li, nav a {
 .device-frame.ipad {
     min-height: 360px;
     padding: 20px;
+}
+
+.stripe-page {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.stripe-status-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.stripe-status-card,
+.stripe-status-side {
+    padding: 36px;
+}
+
+.stripe-status-card h1 {
+    margin: 22px 0 16px;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.stripe-status-card p,
+.stripe-status-side p,
+.stripe-status-list {
+    font-size: 1rem;
+}
+
+.stripe-status-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.stripe-status-side h2 {
+    margin-bottom: 16px;
+}
+
+.stripe-status-list {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+.stripe-status-list li + li {
+    margin-top: 10px;
 }
 
 .device-frame img {
@@ -574,7 +663,8 @@ p, li, nav a {
     .showcase-card,
     .value-card,
     .final-card,
-    .guide-card {
+    .guide-card,
+    .legal-card {
         padding: 24px;
     }
 
